@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/hexoblog/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/hexoblog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/hexoblog/css/main.css?v=7.2.0">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexoblog/images/favicon-32x32.ico?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexoblog/images/favicon-16x16.ico?v=7.2.0">
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hexoblog/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="用户权限 实验 123456789101112131415161718system用户CREATE USER LIXL_TEST1 IDENTIFIED BY LIXL_TEST1 PASSWORD EXPIRE;GRANT CREATE SESSION TO LIXL_TEST1;GRANT CREATE TABLE TO LIXL_TEST1 WITH ADMIN OPTION;LIXL_TE">
+<meta name="keywords" content="Java、Linux、Docker、Node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ocp-052知识点">
+<meta property="og:url" content="https://lixl.gitee.io/hexoblog/20190801124210.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="用户权限 实验 123456789101112131415161718system用户CREATE USER LIXL_TEST1 IDENTIFIED BY LIXL_TEST1 PASSWORD EXPIRE;GRANT CREATE SESSION TO LIXL_TEST1;GRANT CREATE TABLE TO LIXL_TEST1 WITH ADMIN OPTION;LIXL_TE">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-10T15:49:13.801Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ocp-052知识点">
+<meta name="twitter:description" content="用户权限 实验 123456789101112131415161718system用户CREATE USER LIXL_TEST1 IDENTIFIED BY LIXL_TEST1 PASSWORD EXPIRE;GRANT CREATE SESSION TO LIXL_TEST1;GRANT CREATE TABLE TO LIXL_TEST1 WITH ADMIN OPTION;LIXL_TE">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://lixl.gitee.io/hexoblog/20190801124210">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ocp-052知识点 | 学无止境</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hexoblog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学无止境</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">STAY HUNGRY STAY FOOLISH</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexoblog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexoblog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexoblog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexoblog/./archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">67</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/lixl-site" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lixl.gitee.io/hexoblog/hexoblog/20190801124210.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="全部文章">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/hexoblog/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">ocp-052知识点
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-01 12:42:20" itemprop="dateCreated datePublished" datetime="2019-08-01T12:42:20+08:00">2019-08-01</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-06-10 23:49:13" itemprop="dateModified" datetime="2020-06-10T23:49:13+08:00">2020-06-10</time>
+              </span>
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="用户权限"><a href="#用户权限" class="headerlink" title="用户权限"></a>用户权限</h1><ul>
+<li><p>实验</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">system用户</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> LIXL_TEST1 <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> LIXL_TEST1 <span class="keyword">PASSWORD</span> <span class="keyword">EXPIRE</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">CREATE</span> <span class="keyword">SESSION</span> <span class="keyword">TO</span> LIXL_TEST1;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">TO</span> LIXL_TEST1 <span class="keyword">WITH</span> <span class="keyword">ADMIN</span> <span class="keyword">OPTION</span>;</span><br><span class="line"></span><br><span class="line">LIXL_TEST1用户</span><br><span class="line">SQL&gt; create table lixl_table1(id number);</span><br><span class="line"></span><br><span class="line">Table created.</span><br><span class="line"></span><br><span class="line">SQL&gt; insert into lixl_table1 values(1);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> lixl_table1 <span class="keyword">values</span>(<span class="number">1</span>)</span><br><span class="line">            *</span><br><span class="line"><span class="keyword">ERROR</span> <span class="keyword">at</span> line <span class="number">1</span>:</span><br><span class="line">ORA<span class="number">-01950</span>: <span class="keyword">no</span> <span class="keyword">privileges</span> <span class="keyword">on</span> <span class="keyword">tablespace</span> <span class="string">'USERS'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">INDEX</span> tab1_index_id <span class="keyword">ON</span> lixl_table1(<span class="keyword">id</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给用户赋予表空间操作的权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 想要insert成功，需要这个权限</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">unlimited</span> <span class="keyword">tablespace</span> <span class="keyword">to</span>  LIXL_TEST;</span><br><span class="line">```     </span><br><span class="line"></span><br><span class="line">- 查看系统默认的用户表空间</span><br><span class="line">```sql</span><br><span class="line"><span class="keyword">SELECT</span> DEFAULT_TABLESPACE <span class="keyword">FROM</span> dba_users <span class="keyword">WHERE</span> USERNAME=<span class="string">'LIXL_TEST'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看表所属表空间</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TABLE_NAME,TABLESPACE_NAME <span class="keyword">FROM</span> DBA_TABLES <span class="keyword">WHERE</span> TABLE_NAME=<span class="keyword">upper</span>(<span class="string">'lixl_table1'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>REVOKE ROLE 撤销权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">sqlplus / as sysdba</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建用户</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> USER_01 <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> USER_01;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> USER_02 <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> USER_02;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建角色</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">role</span> ROLE_01;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 给角色授权</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">CREATE</span> <span class="keyword">SESSION</span>, <span class="keyword">CREATE</span> <span class="keyword">TABLE</span>, <span class="keyword">CREATE</span> <span class="keyword">VIEW</span> <span class="keyword">TO</span> ROLE_01;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 给用户赋角色</span></span><br><span class="line"><span class="keyword">GRANT</span> ROLE_01 <span class="keyword">TO</span> USER_01;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除角色</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">ROLE</span> ROLE_01;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过role授权(如crate table)，不能直接revoke用户的create table权限</li>
+</ul>
+</li>
+</ul>
+<h1 id="RMAN"><a href="#RMAN" class="headerlink" title="RMAN"></a>RMAN</h1><p>Recovery Manager是用于备份(backup)、还原(restore)和恢复(recover)Oracle数据库的工具。</p>
+<ul>
+<li><p>Ora-19804<br>Ora-19804: Cannot reclaim 45561856 bytes disk space from 8589934592 limit<br>启动数据库到Nomount: startup nomount<br>扩大闪回恢复区的大小:show parameter db_recovery<br>执行SQL语句:alter system set db_recovery_file_dest_size=5g scope=both;<br>打开数据库:alter database mount;<br>打开数据库:alter database open;<br>进入RMAN模式:rman target sys/admin nocatalog<br>RMAN删除过期的备份文件与归档文件:delete backupset;<br>RMAN删除过期的备份文件与归档文件:delete archivelog all;<br>检查一下Flashrecovery Area的使用情况:select * from v$flash_recovery_area_usage;</p>
+</li>
+<li><p>增量备份</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">打开控制文件自动备份</span><br><span class="line">RMAN&gt; CONFIGURE CONTROLFILE AUTOBACKUP ON;</span><br><span class="line">打开备份优化</span><br><span class="line">RMAN&gt; CONFIGURE BACKUP OPTIMIZATION ON;</span><br><span class="line"></span><br><span class="line">执行0级差异增量备份操作</span><br><span class="line">RMAN&gt; BACKUP INCREMENTAL LEVEL 0 DATABASE;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>rman恢复数据库</p>
+<ul>
+<li><p>归档模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">startup force mount;</span><br><span class="line">restore database;</span><br><span class="line">alter database open resetlogs;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>非归档模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">startup force nomount;</span><br><span class="line">restore controlfile;</span><br><span class="line">alter database mount;</span><br><span class="line">restore database;</span><br><span class="line">recover database noredo;</span><br><span class="line">alter database open resetlogs;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>备份文件类型</p>
+<ul>
+<li><p>backupset 备份集</p>
+</li>
+<li><p>image copy（映像文件） 备份</p>
+</li>
+<li><p>备份类型之<a href="https://docs.oracle.com/cd/B28359_01/backup.111/b28270/rcmcncpt.htm#BRADV89487" target="_blank" rel="noopener">Proxy Copies</a><br>Proxy Copies<br>During a proxy copy, RMAN turns over control of the data transfer to a media manager that supports this feature. Proxy copy can only be used with media managers that support it and cannot be used with channels of type DISK. The PROXY option of the BACKUP command specifies that a backup should be a proxy copy.<br>在Proxy Copies内，RMAN将数据传输的控制权转交给支持此功能的媒体管理器。代理副本只能与支持它的媒体管理器一起使用，不能与类型的通道一起使用DISK。该PROXY的选项该BACKUP命令指定备份应该是代理副本。</p>
+<p>For each file that you attempt to back up with the BACKUP PROXY command, RMAN queries the media manager to determine whether it can perform a proxy copy. If the media manager cannot proxy copy the file, then RMAN backs the file up as if the PROXY option had not been used. (Use the PROXY ONLY option to force RMAN to fail if a proxy copy cannot be performed.)<br>对于您尝试使用的备份的每个文件 BACKUP PROXY命令，RMAN查询媒体管理器以确定它是否可以执行代理副本。如果媒体管理器无法代理复制文件，则RMAN会将文件备份，就像PROXY未使用该选项一样。（使用PROXY ONLY 如果无法执行代理副本，则强制RMAN失败的选项。）</p>
+<p>Note that control files are never backed up with proxy copy. If the PROXY option is specified on an operation backing up a control file, then it is silently ignored for the purposes of backing up the control file.<br>请注意，控制文件永远不会使用代理副本进行备份。如果在PROXY备份控制文件的操作上指定了该选项，则会以静默方式忽略该选项以备份控制文件。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="metadata"><a href="#metadata" class="headerlink" title="metadata"></a>metadata</h2><p>元数据存储在control file   </p>
+<h1 id="flashback"><a href="#flashback" class="headerlink" title="flashback"></a>flashback</h1><p>恢复误删除表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 如误删除EMP表</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> EMP;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询回收站是否存在该表记录</span></span><br><span class="line"><span class="keyword">select</span> object_name,original_name,partition_name,<span class="keyword">type</span>,ts_name,createtime,droptime </span><br><span class="line">  <span class="keyword">from</span> recyclebin</span><br><span class="line"> <span class="keyword">where</span> original_name = <span class="string">'EMP'</span>;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">-- 恢复</span></span><br><span class="line"> flashback table EMP to before <span class="keyword">drop</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="pfile"><a href="#pfile" class="headerlink" title="pfile"></a>pfile</h1><p>使用pfile启动数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看系统使用的spfile还是pfile启动的</span></span><br><span class="line"><span class="comment">-- 如果使用的pfile就没有内容</span></span><br><span class="line"><span class="keyword">show</span> parameter <span class="keyword">spfile</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 从spfile创建pfile</span></span><br><span class="line"><span class="keyword">create</span> pfile=<span class="string">'/u01/app/pfile.txt'</span> <span class="keyword">from</span> <span class="keyword">spfile</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 指定pfile startup daatabase</span></span><br><span class="line">startup pfile='/u01/app/pfile.txt';</span><br></pre></td></tr></table></figure>
+
+<h1 id="AWR"><a href="#AWR" class="headerlink" title="AWR"></a>AWR</h1><p><a href="https://blog.csdn.net/xiangsir/article/details/8648615" target="_blank" rel="noopener">Oracle 11g AWR 系列一：AWR 的基本概念理解</a><br>Automatic Workload Repository (AWR)<br>收集、处理和维护用于问题诊断的性能统计信息。<br>该数据既存在于数据块中，也存在于内存中。<br>AWR 收集的数据可以通过报告和视图进行查看。</p>
+<p>AWR 处理和收集的统计信息包括：<br>1.确定数据块 segment 访问路径和使用情况的对象统计信息<br>2.基于数据库活动的时间使用情况的时间模型统计信息，可在 V$SYS_TIME_MODEL 和 V$SESS_TIME_MODEL 视图中查看<br>3.V$SYSSTAT 和 V$SESSTAT 视图中收集的一些 sytem 和 session 的统计信息<br>4.按照 elapsed time 和 CPU time 等条件在系统上筛选出的产生较高负载的 SQL 语句<br>5.ASH(ctive Session History，活动会话历史记录)统计信息——最近的 session 活动的历史记录</p>
+<h1 id="IPS"><a href="#IPS" class="headerlink" title="IPS"></a>IPS</h1><p>(Incident Packaging Service)<a href="https://www.linuxidc.com/Linux/2015-10/124226.htm" target="_blank" rel="noopener">事件打包服务</a><br>利用这个打包事件压缩的文件夹提交给oracle的支持来帮助解决分析问题。<br>创建一个事件包，将添加一个或多个相关的问题到打包文件中。其中包括trace文件，dump文件等。<br>缺省情况下，每一个问题的事件包仅仅包括第一个和最后三个事件。事件包包含所有可以用于诊断的事件。也可以指定事件发生的时间或数量范围来打包。</p>
+<h1 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h1><p>锁是一种保护机制， 用于管理对共享资源的并发访问。<br>oracle 数据库是多用户数据库， 可以并发操作。<br>锁避免了并发操作带来的数据不一致情况。</p>
+<ul>
+<li><p>DML、事务及锁的关系<br>DML 操作用到的两种锁：<br>受影响记录上的排它锁 exclusive<br>受影响表上的共享锁 shared</p>
+<ul>
+<li>排它锁： 当前会话(事务)加锁后， 其他会话不能加锁， 只能等待。<br>行级别排他锁，保护这行的数据，防止其他会话修改这些行。 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询时给整行加锁</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> EMP <span class="keyword">FOR</span> <span class="keyword">UPDATE</span> <span class="keyword">NOWAIT</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 给指定SAL列加锁</span></span><br><span class="line"><span class="keyword">SELECT</span> SAL <span class="keyword">FROM</span> EMP <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>只锁定修改的行，缩小加锁范围。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 如： session1 update 一行， session2 update 此行会等待。 但可以 update 其他行。</span></span><br><span class="line"><span class="keyword">UPDATE</span> EMP <span class="keyword">SET</span> SAL=<span class="number">1000</span> <span class="keyword">WHERE</span> EMPNO=<span class="number">7369</span> ;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>共享锁： 可以加多份。 表级别， 保护表的结构， 防止其他会话使用 DDL 语句修改表的定义。<br>如： session1 做 update 操作时， session2 不能把表删了， 不能把字段删了。</li>
+</ul>
+</li>
+<li><p>死锁与锁等待<br>产生死锁至少存在两个锁 及多于两个线程。</p>
+<ul>
+<li>行级锁死锁示例<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 一。 session1</span></span><br><span class="line"><span class="keyword">UPDATE</span> EMP <span class="keyword">SET</span> SAL=<span class="number">8000</span> <span class="keyword">WHERE</span> EMPNO=<span class="number">7788</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 二。 session2</span></span><br><span class="line"><span class="keyword">UPDATE</span> EMP <span class="keyword">SET</span> SAL=sal*<span class="number">2</span> <span class="keyword">WHERE</span> EMPNO=<span class="number">7369</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 三。 session1</span></span><br><span class="line"><span class="keyword">UPDATE</span> EMP <span class="keyword">SET</span> SAL=<span class="number">8000</span> <span class="keyword">WHERE</span> EMPNO=<span class="number">7369</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 四。 session2</span></span><br><span class="line"><span class="keyword">UPDATE</span> EMP <span class="keyword">SET</span> SAL=sal*<span class="number">2</span> <span class="keyword">WHERE</span> EMPNO=<span class="number">7788</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>进行步骤三时，session1出现锁等待。<br>进行步骤四时，session2出现锁等待，同时session1出现死锁。   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">SCOTT@PROD&gt; UPDATE EMP SET SAL=8000 WHERE EMPNO=7369;</span><br><span class="line">UPDATE EMP SET SAL=8000 WHERE EMPNO=7369</span><br><span class="line">*</span><br><span class="line">ERROR at line 1:</span><br><span class="line">ORA-00060: deadlock detected while waiting for resource</span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line">原因分析：</span><br><span class="line">步骤一 session1获取锁A，</span><br><span class="line">步骤二 session2获取锁B，</span><br><span class="line">步骤三 session1获取锁B（获取不到锁，处于锁等待状态）</span><br><span class="line">步骤四 session2获取锁A（也获取不到锁，并且发生死锁）</span><br><span class="line"></span><br><span class="line">解决：</span><br><span class="line">oracle检测到死锁时会自动释放其中一个锁，但另一个线程还处于锁等待状态。</span><br><span class="line">```sql</span><br><span class="line">-- 查看处于锁等待的会话</span><br><span class="line">SELECT SID, EVENT, blocking_session,USERNAME FROM V$SESSION WHERE blocking_session IS NOT NULL;</span><br><span class="line"></span><br><span class="line">-- 查看当前会话ID</span><br><span class="line">select userenv(&apos;sid&apos;) from dual;</span><br></pre></td></tr></table></figure>
+
+<p>发生锁等待，说明应用程序的处理事务逻辑有问题，需要调整应用中的DML了，<br>可以通过oracle日志及代码查找出现死锁的语句然后调整业务逻辑。</p>
+</li>
+</ul>
+<h1 id="OLTP与OLAP"><a href="#OLTP与OLAP" class="headerlink" title="OLTP与OLAP"></a>OLTP与OLAP</h1><p>On-Line Transaction Processing联机事务处理过程</p>
+<ul>
+<li>与事务、锁冲突、多线程等有关</li>
+</ul>
+<p>On-Line Analytical Processing 联机分析处理过程</p>
+<h1 id="系统参数"><a href="#系统参数" class="headerlink" title="系统参数"></a>系统参数</h1><ul>
+<li><a href="https://blog.csdn.net/dave_sunny/article/details/9166727" target="_blank" rel="noopener">AUDIT_TRAIL</a><br>用于控制数据库审计 <a href="http://blog.itpub.net/26736162/viewspace-2140644/" target="_blank" rel="noopener">审计功能</a></li>
+</ul>
+<h1 id="IOT"><a href="#IOT" class="headerlink" title="IOT"></a>IOT</h1><p>Oracle提供了多种数据表存储结构。<br>最常见的就是三种，分别为堆表（Heap Table）、索引组织表（Index Organization Table，简称为IOT）和聚簇表（Cluster Table）。<br>Heap Table是我们在Oracle中最常使用的数据表，也是Oracle的默认数据表存储结构</p>
+<ul>
+<li>Index Organized Table <a href="https://blog.csdn.net/zhangxinrun/article/details/8103078" target="_blank" rel="noopener">索引组织表</a></li>
+</ul>
+<h1 id="index"><a href="#index" class="headerlink" title="index"></a>index</h1><p>unusable rebuild </p>
+<h1 id="SGA"><a href="#SGA" class="headerlink" title="SGA"></a>SGA</h1><p>AMM时还需要手动管理的组件：redo log buffer、keep buffer pool</p>
+<h1 id="space-management"><a href="#space-management" class="headerlink" title="space management"></a>space management</h1><p>使用bitmap管理相邻空闲块<br>ASSM或MSSM管理一个表空间内的空闲块</p>
+<h1 id="fast-recovery-area-size"><a href="#fast-recovery-area-size" class="headerlink" title="fast recovery area size"></a>fast recovery area size</h1><p>db_recovery_file_dest_size =5G<br>重新设置的时候，不足的空间会自动删除过时的归档日志</p>
+<h1 id="dbca"><a href="#dbca" class="headerlink" title="dbca"></a>dbca</h1><p>oracle服务处于nomount状态时，使用dbca删除数据库，只删除服务，不删除dbf文件</p>
+<h1 id="redo与undo"><a href="#redo与undo" class="headerlink" title="redo与undo"></a>redo与undo</h1><h1 id="external-table"><a href="#external-table" class="headerlink" title="external table"></a>external table</h1><p><a href="https://www.cnblogs.com/ilifeilong/p/7648193.html" target="_blank" rel="noopener">https://www.cnblogs.com/ilifeilong/p/7648193.html</a></p>
+<h1 id="incremenal-checkpoint"><a href="#incremenal-checkpoint" class="headerlink" title="incremenal checkpoint"></a>incremenal checkpoint</h1><p>ckpt增量检查点<br>作用：DBWn将脏块写入dbf文件时执行<br>触发时机：3秒、LGWn触发</p>
+<h1 id="PL-SQL-package"><a href="#PL-SQL-package" class="headerlink" title="PL/SQL package"></a>PL/SQL package</h1><p>PL/SQL包（package）一旦创建被存储在oracle数据库中，由两部分组成：<br>（1）.包规范（specification）一些包的定义信息，类型、记录、变量、常量、异常定义、游标和子程序；<br>（2）包体（Body）：包体是对包规范中声明的子程序的实现部分<br>置于规范的所有对象被称为公共对象。任何子程序在封装主体中没有包定义但编码被称为私有对象。</p>
+<h1 id="oracle-lock"><a href="#oracle-lock" class="headerlink" title="oracle lock"></a>oracle lock</h1><p>TM lock 表级锁<br>TX lock 行级锁或事务锁<br>select 无锁<br>select * from for update 行级排他锁<br>DML 行级排他锁<br>DDL 表级排他锁</p>
+<h1 id="INITIALLY-IMMEDIATE"><a href="#INITIALLY-IMMEDIATE" class="headerlink" title="INITIALLY IMMEDIATE"></a>INITIALLY IMMEDIATE</h1><p>一般情况下（默认情况下），执行语句是立即检查约束(immediate),不能延迟<br>特殊情况下，也可以设置为提交事务时检查约束(DEFERRED)，也称延迟约束<br>设置延迟约束deferrable initially immediate<br>如果创建时没设置，则无法在后来使约束成为延迟约束。延迟约束一般用于外键<br>not deferrable | deferrable [ initially { immediate | deferred } ]。<br>not deferrable 是不可延迟，并且约束也无法更改为可延迟状态。约束会在每一句sql statement 之后都进行 check，不符合则 roll back<br>deferrable 是可延迟状态，在 deferrable 状态时又有2个选项，创建时缺省是initially immediate，即约束会在每一句sql statement 之后都进行 check，效果等同于not deferrable，但是可以修改延迟状态。<br>initially deferred 约束会在整个事务进行commit 时check，如果不符合则roll back<br>在deferrable状态下，可以通过set constraints修改 immediate或者deferred<br>约束的状态分为<br>ENABLE VALIDATE:无法输入违法约束的行，而且表中的所有行都符合约束，约束新行也约束现有数据<br>Disable NOVALIDATE：可以输入任何数据，表中可能已经存在不合要求的的数据<br>ENABLE NOVALIDATE：表中已经存在不合要求的数据，但现在输入的所有数据必须符合要求<br>DISABLE VALIDATE：表中所有的数据都符合约束，但新行未必如此.约束上的索引也会被删除</p>
+<h1 id="opatch"><a href="#opatch" class="headerlink" title="opatch"></a>opatch</h1><p>oracle打补丁工具<br>默认安装，位置./$ORCLE_HOME/OPatch/opatch version<br>在线升级补丁</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ./opatch apply online -connectString PROD:sys:oracle</span><br><span class="line">``` </span><br><span class="line">查看本机补丁列表详情</span><br></pre></td></tr></table></figure>
+
+<p>$ ./opatch lsinventory -detail</p>
+<pre><code>
+# AUDIT_TRAIL
+AUDIT_TRAIL启用或禁用数据库审计。当设置该参数为NONE或FALSE时，将禁止数据库审计；当设置该参数为OS时，将激活数据库审计，并将审计记录写入到OS审计跟踪文件中；当设置该参数为DB或TRUE时，将激活数据库审计，并将审计记录写入到数据字典SYS.AUD$中；当设置该参数为DB_EXTENDED时，不仅将审计记录写入到数据字典SYS.AUD$中，还会填充该数据字典的SQLBIND和SQLTEXT列。
+取值说明:
+none 禁用数据库审计
+os 启用数据库审计，并将数据库审计记录定向到操作系统审计记录
+db 启用数据库审计，并将数据库所有审计记录定向到数据库的SYS.AUD$表
+db,extended 启用数据库审计，并将数据库所有审计记录定向到数据库的SYS.AUD$表。另外，填充SYS.AUD$表的SQLBIND 列和SQLTEXT CLOB 列。
+xml 启用数据库审计，并将所有记录写到XML格式的操作系统文件中。
+xml,extended 启用数据库审计，输出审计记录的所有列，包括SqlText和SqlBind的值。
+你可以使用SQL语句AUDIT来设置审计选项，不管如何设置此参数。 
+本题开启审计并对EMP表上的所有操作进行审计 audit all on Emp 
+
+# db link
+默认private只有当前用户访问，public所有用户可访问
+
+# expdp
+可以导出view/sequence/package
+
+# trace files
+Trace file：跟踪文件一般由各个后台进程生成，一般在遇到错误时生成。这些文件与警报日志一起放在跟踪目录中
+跟踪文件是包含用于调查问题的诊断数据的管理文件。此外，跟踪文件还可以为应用程序或实例的调优提供指导，每个服务器和后台进程都可以周期性地写入相关的跟踪文件。关于流程环境、状态、活动和错误的文件信息。
+SQL跟踪工具还创建跟踪文件，这些文件提供关于单个SQL语句的性能信息。要启用对客户机标识符、服务、模块、操作、会话、实例或数据库的跟踪，必须在DBMS_MONITOR包中执行适当的过程，或者使用Oracle Enterprise Manager。
+转储是一种特殊类型的跟踪文件。虽然跟踪往往是诊断数据的连续输出，但转储通常是响应事件(例如事件)的诊断数据的一次性输出。当发生事件时，数据库将一个或多个转储写入为该事件创建的事件目录。事件转储还包含文件名中的事件号
+
+# materialized view
+物化视图，需要空间(create table权限)
+
+# oracle grid
+要先创建os dba group和os user account
+
+# SRVCTL 
+可以用来添加和删除数据库，关闭数据库实例
+https://blog.csdn.net/w892824196/article/details/79295593
+
+# Optimizer Statistics
+https://docs.oracle.com/cd/E25178_01/server.1111/e16638/stats.htm 
+https://yq.aliyun.com/articles/283792   
+oracle优化器对一个sql语句检测所有可能的执行计划并选择一个成本值最小的,这里的成本代表了一个特定执行计划的资源使用情况.为了让优化器能准确的判断一个执行计划的成本它必须要关于sql语句要访问的所有对象(表或索引)的信息同时还要有运行sql语句的系统信息.
+
+# </code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexoblog/20190731212714.html" rel="next" title="ocp-071知识点">
+                <i class="fa fa-chevron-left"></i> ocp-071知识点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/hexoblog/20190810100542.html" rel="prev" title="mysql-高频问题">
+                mysql-高频问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/hexoblog/images/avatar.png" alt="全部文章">
+            
+              <p class="site-author-name" itemprop="name">全部文章</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/hexoblog/./archives/">
+                
+                    <span class="site-state-item-count">67</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/hexoblog/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://gitee.com/lixl" title="GitHub &rarr; https://gitee.com/lixl" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用户权限"><span class="nav-number">1.</span> <span class="nav-text">用户权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RMAN"><span class="nav-number">2.</span> <span class="nav-text">RMAN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#metadata"><span class="nav-number">2.1.</span> <span class="nav-text">metadata</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flashback"><span class="nav-number">3.</span> <span class="nav-text">flashback</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pfile"><span class="nav-number">4.</span> <span class="nav-text">pfile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AWR"><span class="nav-number">5.</span> <span class="nav-text">AWR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IPS"><span class="nav-number">6.</span> <span class="nav-text">IPS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁"><span class="nav-number">7.</span> <span class="nav-text">锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OLTP与OLAP"><span class="nav-number">8.</span> <span class="nav-text">OLTP与OLAP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统参数"><span class="nav-number">9.</span> <span class="nav-text">系统参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOT"><span class="nav-number">10.</span> <span class="nav-text">IOT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#index"><span class="nav-number">11.</span> <span class="nav-text">index</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SGA"><span class="nav-number">12.</span> <span class="nav-text">SGA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#space-management"><span class="nav-number">13.</span> <span class="nav-text">space management</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fast-recovery-area-size"><span class="nav-number">14.</span> <span class="nav-text">fast recovery area size</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dbca"><span class="nav-number">15.</span> <span class="nav-text">dbca</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redo与undo"><span class="nav-number">16.</span> <span class="nav-text">redo与undo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#external-table"><span class="nav-number">17.</span> <span class="nav-text">external table</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#incremenal-checkpoint"><span class="nav-number">18.</span> <span class="nav-text">incremenal checkpoint</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PL-SQL-package"><span class="nav-number">19.</span> <span class="nav-text">PL/SQL package</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#oracle-lock"><span class="nav-number">20.</span> <span class="nav-text">oracle lock</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#INITIALLY-IMMEDIATE"><span class="nav-number">21.</span> <span class="nav-text">INITIALLY IMMEDIATE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#opatch"><span class="nav-number">22.</span> <span class="nav-text">opatch</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lixl-site</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/hexoblog/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/hexoblog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/hexoblog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/hexoblog/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/hexoblog/js/utils.js?v=7.2.0"></script>
+
+  <script src="/hexoblog/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/hexoblog/js/affix.js?v=7.2.0"></script>
+
+  <script src="/hexoblog/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/hexoblog/js/scrollspy.js?v=7.2.0"></script>
+<script src="/hexoblog/js/post-details.js?v=7.2.0"></script>
+
+
+
+  
+
+
+  <script src="/hexoblog/js/next-boot.js?v=7.2.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'b6cea732dbf2ca167181',
+    clientSecret: 'b1da71c5f8e153cd0b45867373233d89cba7955a',
+    repo: 'blogtalk',
+    owner: 'lixl-site',
+    admin: ['lixl-site'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/hexoblog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      const selection = document.getSelection();
+      const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false;
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+      if (selected) {
+        selection.removeAllRanges();
+        selection.addRange(selected);
+      }
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
