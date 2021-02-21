@@ -97,18 +97,18 @@
 
 
 
-  <meta name="description" content="编写测试用例文档 http接口测试(webservice)执行测试用户集群运行 master节点jmeter.properties12server_port=1099  ## 端口server.rmi.ssl.disable=true ## 关闭https服务    ./jmeter-server 启动服务端  node节点jmeter.properties1remote_hosts=192.16">
+  <meta name="description" content="编写测试用例文档 http接口测试(webservice) HTTP Request Defaults 请求默认信息HTTP Request中没有配置的话，会从这里取值  User Defined Variables 定义变量使用${param}取值  HTTP Request http请求配置  文件上传配置Parameter Name : 服务器MultipartFile参数对象名File P">
 <meta name="keywords" content="jmeter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jmeter使用">
 <meta property="og:url" content="https://lixl.gitee.io/hexoblog/20200921175801.html">
 <meta property="og:site_name" content="学无止境">
-<meta property="og:description" content="编写测试用例文档 http接口测试(webservice)执行测试用户集群运行 master节点jmeter.properties12server_port=1099  ## 端口server.rmi.ssl.disable=true ## 关闭https服务    ./jmeter-server 启动服务端  node节点jmeter.properties1remote_hosts=192.16">
+<meta property="og:description" content="编写测试用例文档 http接口测试(webservice) HTTP Request Defaults 请求默认信息HTTP Request中没有配置的话，会从这里取值  User Defined Variables 定义变量使用${param}取值  HTTP Request http请求配置  文件上传配置Parameter Name : 服务器MultipartFile参数对象名File P">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-27T08:01:46.174Z">
+<meta property="og:updated_time" content="2020-12-14T13:59:53.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jmeter使用">
-<meta name="twitter:description" content="编写测试用例文档 http接口测试(webservice)执行测试用户集群运行 master节点jmeter.properties12server_port=1099  ## 端口server.rmi.ssl.disable=true ## 关闭https服务    ./jmeter-server 启动服务端  node节点jmeter.properties1remote_hosts=192.16">
+<meta name="twitter:description" content="编写测试用例文档 http接口测试(webservice) HTTP Request Defaults 请求默认信息HTTP Request中没有配置的话，会从这里取值  User Defined Variables 定义变量使用${param}取值  HTTP Request http请求配置  文件上传配置Parameter Name : 服务器MultipartFile参数对象名File P">
 
 
 
@@ -263,7 +263,7 @@
       
     
 
-    <a href="/hexoblog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span></a>
+    <a href="/hexoblog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">18</span></a>
 
   </li>
         
@@ -281,7 +281,7 @@
       
     
 
-    <a href="/hexoblog/./archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">67</span></a>
+    <a href="/hexoblog/./archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">73</span></a>
 
   </li>
 
@@ -427,7 +427,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-09-27 16:01:46" itemprop="dateModified" datetime="2020-09-27T16:01:46+08:00">2020-09-27</time>
+                <time title="修改时间：2020-12-14 21:59:53" itemprop="dateModified" datetime="2020-12-14T21:59:53+08:00">2020-12-14</time>
               </span>
             
           
@@ -473,7 +473,19 @@
 
       
         <h1 id="编写测试用例"><a href="#编写测试用例" class="headerlink" title="编写测试用例"></a>编写测试用例</h1><p><a href="https://jmeter.apache.org/usermanual/component_reference.html" target="_blank" rel="noopener">文档</a></p>
-<h2 id="http接口测试-webservice"><a href="#http接口测试-webservice" class="headerlink" title="http接口测试(webservice)"></a>http接口测试(webservice)</h2><h1 id="执行测试用户"><a href="#执行测试用户" class="headerlink" title="执行测试用户"></a>执行测试用户</h1><h2 id="集群运行"><a href="#集群运行" class="headerlink" title="集群运行"></a>集群运行</h2><ul>
+<h2 id="http接口测试-webservice"><a href="#http接口测试-webservice" class="headerlink" title="http接口测试(webservice)"></a>http接口测试(webservice)</h2><ul>
+<li><p>HTTP Request Defaults 请求默认信息<br>HTTP Request中没有配置的话，会从这里取值</p>
+</li>
+<li><p>User Defined Variables 定义变量<br>使用<code>${param}</code>取值</p>
+</li>
+<li><p>HTTP Request http请求配置</p>
+</li>
+<li><p>文件上传配置<br>Parameter Name : 服务器MultipartFile参数对象名<br>File Path : 客户端上传的文件路径<br>MIME type : multipart/form-data     </p>
+</li>
+<li><p><a href="https://www.cnblogs.com/Zhan-W/p/10985816.html" target="_blank" rel="noopener">jmeter中JSON Extractor用法</a></p>
+</li>
+</ul>
+<h1 id="执行测试用户"><a href="#执行测试用户" class="headerlink" title="执行测试用户"></a>执行测试用户</h1><h2 id="集群运行"><a href="#集群运行" class="headerlink" title="集群运行"></a>集群运行</h2><ul>
 <li>master节点<br>jmeter.properties<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">server_port=1099  ## 端口</span><br><span class="line">server.rmi.ssl.disable=true ## 关闭https服务</span><br></pre></td></tr></table></figure>
 
 </li>
@@ -496,6 +508,16 @@
 </ul>
 <h2 id="idea插件"><a href="#idea插件" class="headerlink" title="idea插件"></a>idea插件</h2><p>配置JMETER_HOME</p>
 <h1 id="查看测试报告"><a href="#查看测试报告" class="headerlink" title="查看测试报告"></a>查看测试报告</h1><p><a href="https://www.cnblogs.com/hjianhui/p/9991361.html" target="_blank" rel="noopener">JMeter聚合报告（Aggregate Report）理解</a></p>
+<h1 id="快捷使用"><a href="#快捷使用" class="headerlink" title="快捷使用"></a>快捷使用</h1><h2 id="windows快速打开jmx脚本"><a href="#windows快速打开jmx脚本" class="headerlink" title="windows快速打开jmx脚本"></a>windows快速打开jmx脚本</h2><ul>
+<li><p>1.配置JMETER_HOME及PATH环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">保证 jmeter --? 命令可用</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.编写openJmeter.bat脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jmeter -t %1 -j C:\%HOMEPATH%\.jmeter\jmeter.log</span><br><span class="line"></span><br><span class="line">%1 获取到双击的jmx文件路径</span><br><span class="line">-t 指定打开的jmx文件</span><br><span class="line">-j 指定log文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.设置jmx文件的默认打开程序为openJmeter.bat即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">配置完成后，双击jmx文件即可使用jmeter图形界面程序打开</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
@@ -544,6 +566,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/hexoblog/20201016095342.html" rel="prev" title="logback使用">
+                logback使用 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -618,7 +644,7 @@
                 
                   <a href="/hexoblog/./archives/">
                 
-                    <span class="site-state-item-count">67</span>
+                    <span class="site-state-item-count">73</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -671,7 +697,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -724,7 +752,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编写测试用例"><span class="nav-number">1.</span> <span class="nav-text">编写测试用例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#http接口测试-webservice"><span class="nav-number">1.1.</span> <span class="nav-text">http接口测试(webservice)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#执行测试用户"><span class="nav-number">2.</span> <span class="nav-text">执行测试用户</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#集群运行"><span class="nav-number">2.1.</span> <span class="nav-text">集群运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jmeter-maven-plugin"><span class="nav-number">2.2.</span> <span class="nav-text">jmeter-maven-plugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#idea插件"><span class="nav-number">2.3.</span> <span class="nav-text">idea插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看测试报告"><span class="nav-number">3.</span> <span class="nav-text">查看测试报告</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编写测试用例"><span class="nav-number">1.</span> <span class="nav-text">编写测试用例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#http接口测试-webservice"><span class="nav-number">1.1.</span> <span class="nav-text">http接口测试(webservice)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#执行测试用户"><span class="nav-number">2.</span> <span class="nav-text">执行测试用户</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#集群运行"><span class="nav-number">2.1.</span> <span class="nav-text">集群运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jmeter-maven-plugin"><span class="nav-number">2.2.</span> <span class="nav-text">jmeter-maven-plugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#idea插件"><span class="nav-number">2.3.</span> <span class="nav-text">idea插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看测试报告"><span class="nav-number">3.</span> <span class="nav-text">查看测试报告</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快捷使用"><span class="nav-number">4.</span> <span class="nav-text">快捷使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#windows快速打开jmx脚本"><span class="nav-number">4.1.</span> <span class="nav-text">windows快速打开jmx脚本</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -745,7 +773,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
