@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/hexoblog/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/hexoblog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/hexoblog/css/main.css?v=7.2.0">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexoblog/images/favicon-32x32.ico?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexoblog/images/favicon-16x16.ico?v=7.2.0">
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hexoblog/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="https://www.bilibili.com/video/BV1RC4y1H7ok/?p=2https://gitee.com/lixl/web-demo.git     23种设计模式 创建型  singleton factory method abstract factory builder prototype   结构型  adapter bridge composite decorat">
+<meta name="keywords" content="Java、Linux、Docker、Node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-designPatterns">
+<meta property="og:url" content="https://lixl.gitee.io/hexoblog/20200607203815.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="https://www.bilibili.com/video/BV1RC4y1H7ok/?p=2https://gitee.com/lixl/web-demo.git     23种设计模式 创建型  singleton factory method abstract factory builder prototype   结构型  adapter bridge composite decorat">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-10-02T12:13:57.396Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java-designPatterns">
+<meta name="twitter:description" content="https://www.bilibili.com/video/BV1RC4y1H7ok/?p=2https://gitee.com/lixl/web-demo.git     23种设计模式 创建型  singleton factory method abstract factory builder prototype   结构型  adapter bridge composite decorat">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://lixl.gitee.io/hexoblog/20200607203815">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>java-designPatterns | 学无止境</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hexoblog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学无止境</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">STAY HUNGRY STAY FOOLISH</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexoblog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexoblog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexoblog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">18</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/hexoblog/./archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">78</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/lixl-site" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lixl.gitee.io/hexoblog/hexoblog/20200607203815.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="全部文章">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/hexoblog/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">java-designPatterns
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-07 20:38:20" itemprop="dateCreated datePublished" datetime="2020-06-07T20:38:20+08:00">2020-06-07</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-10-02 20:13:57" itemprop="dateModified" datetime="2020-10-02T20:13:57+08:00">2020-10-02</time>
+              </span>
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://www.bilibili.com/video/BV1RC4y1H7ok/?p=2" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1RC4y1H7ok/?p=2</a><br><a href="https://gitee.com/lixl/web-demo.git" target="_blank" rel="noopener">https://gitee.com/lixl/web-demo.git</a>    </p>
+<h1 id="23种设计模式"><a href="#23种设计模式" class="headerlink" title="23种设计模式"></a>23种设计模式</h1><ul>
+<li><p>创建型</p>
+<ul>
+<li>singleton</li>
+<li>factory method</li>
+<li>abstract factory</li>
+<li>builder</li>
+<li>prototype</li>
+</ul>
+</li>
+<li><p>结构型</p>
+<ul>
+<li>adapter</li>
+<li>bridge</li>
+<li>composite</li>
+<li>decorater</li>
+<li>facade</li>
+<li>flyweight</li>
+<li>proxy</li>
+</ul>
+</li>
+<li><p>行为型</p>
+<ul>
+<li>chain of responsibility</li>
+<li>command</li>
+<li>interpreter</li>
+<li>iterator</li>
+<li>mediator</li>
+<li>memento</li>
+<li>observer</li>
+<li>state</li>
+<li>strategy</li>
+<li>template method</li>
+<li>visitor    </li>
+</ul>
+</li>
+</ul>
+<h2 id="单例模式singleton"><a href="#单例模式singleton" class="headerlink" title="单例模式singleton"></a>单例模式singleton</h2><h3 id="静态方法单例"><a href="#静态方法单例" class="headerlink" title="静态方法单例"></a>静态方法单例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package com.p1;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 饱汉单例</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class M1 &#123;</span><br><span class="line"></span><br><span class="line">    private static final M1 instance = new M1();</span><br><span class="line"></span><br><span class="line">    private M1()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static M1 getInstance()&#123;</span><br><span class="line"></span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="静态内部类单例"><a href="#静态内部类单例" class="headerlink" title="静态内部类单例"></a>静态内部类单例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.demo.p1;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 静态内部类实现单例</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">M2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//隐藏构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">M2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="number">111</span>);<span class="comment">//不管</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> M2 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> M2Inner.getM2();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line"><span class="comment">//        System.out.println("eeee");</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">M2Inner</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> M2 m2 = <span class="keyword">new</span> M2();</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="title">M2Inner</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> M2 <span class="title">getM2</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> m2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DCL单例"><a href="#DCL单例" class="headerlink" title="DCL单例"></a>DCL单例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.p1;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 懒加载-DCL</span></span><br><span class="line"><span class="comment"> * 1.synchronized保证多线程下只创建一个实例</span></span><br><span class="line"><span class="comment"> * 2.volatile 保证不发生指令重排(JIT发生重排时会导致获取的instance为空)</span></span><br><span class="line"><span class="comment">   3.对象创建半初始化</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">M2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> M2 instance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">M2</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> M2 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (M2<span class="class">.<span class="keyword">class</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(instance==<span class="keyword">null</span>)&#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> M2();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="枚举单例"><a href="#枚举单例" class="headerlink" title="枚举单例"></a>枚举单例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.p1;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用枚举实现单例</span></span><br><span class="line"><span class="comment"> * Effect java推荐的方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> M3 &#123;</span><br><span class="line"></span><br><span class="line">    INSTANCE;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="number">1111</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        M3.INSTANCE.doSomething();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="spring-bean单例"><a href="#spring-bean单例" class="headerlink" title="spring-bean单例"></a>spring-bean单例</h3><p>Spring创建Bean的scope(prototype/singleton)默认为singleton<br><code>org.springframework.beans.factory.support.DefaultListableBeanFactory#preInstantiateSingletons</code>     </p>
+<h2 id="策略模式strategy"><a href="#策略模式strategy" class="headerlink" title="策略模式strategy"></a>策略模式strategy</h2><ul>
+<li>java.util.Comparator接口<br><code>java.util.Arrays.sort(T[] a, Comparator&lt;? super T&gt; c)</code><br><code>java.util.Collections.sort(List&lt;T&gt; list, Comparator&lt;? super T&gt; c)</code>         </li>
+</ul>
+<p>实现两种策略（通过年龄和重量两种属性排序），通过sort方法调用后给数组排序</p>
+<pre class="mermaid">classDiagram
+    class java_util_Arrays
+    java_util_Arrays: +sort(T[] t, Comparator c)
+
+    class Comparator
+    <<interface>> Comparator
+    Comparator: +compare(Object o1, Object o2) int
+
+    java_util_Arrays o-- Comparator
+
+    class AnimalAgeComparator
+    AnimalAgeComparator: +compare(Object o1, Object o2) int
+
+    class AnimalWeightComparator
+    AnimalWeightComparator: +compare(Object o1, Object o2) int
+
+    AnimalAgeComparator ..|> Comparator : impl
+    AnimalWeightComparator ..|> Comparator : impl
+
+    class Main
+    Main: +execute()
+
+    Main ..> java_util_Arrays : invoke</interface></pre>
+
+<h2 id="工厂模式factory"><a href="#工厂模式factory" class="headerlink" title="工厂模式factory"></a>工厂模式factory</h2><p>1.能生成对象的类或者方法，都是工厂<br>2.单例也是一种工厂模式<br>3.比直接用new创建对象好，可以控制对象的生成过程</p>
+<ul>
+<li><p>简单工厂<br>与策略模式类似，工厂生产不同的种类的产品，方便控制不同产品生产过程</p>
+</li>
+<li><p>静态工厂</p>
+</li>
+<li><p>工厂方法</p>
+</li>
+<li><p>抽象工厂<br>不直接生产产品，而是调用抽象工厂生产抽象的产品(好像是对不同类型但有些相同点的产品都用抽象工厂来生产)</p>
+</li>
+<li><p>spring IOC<br>spring-BeanFatory</p>
+</li>
+</ul>
+<h2 id="门面模式-调停者模式"><a href="#门面模式-调停者模式" class="headerlink" title="门面模式/调停者模式"></a>门面模式/调停者模式</h2><p>如消息中间件，可以给各个组件解耦</p>
+<h2 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h2><p>1.增强某个类的功能，与代理模式相同</p>
+<h2 id="观察者模式-observer"><a href="#观察者模式-observer" class="headerlink" title="观察者模式 observer"></a>观察者模式 observer</h2><p>1.Observer、Listener、Hook、Callback、js event 都是观察者模式</p>
+<p>2.以事件监听器为例理解<br>SourceEvent 事件源对象，由事件产生<br>EventListener 事件监听者(可以有多个)，接收事件源并处理<br>EventObserver 事件观察者，把事件源对象传递给监听者</p>
+<h2 id="组合模式-composite"><a href="#组合模式-composite" class="headerlink" title="组合模式 composite"></a>组合模式 composite</h2><p>封装树形结构的节点<br>如文件：File(file/directory)</p>
+<h2 id="享元模式-flywight"><a href="#享元模式-flywight" class="headerlink" title="享元模式 flywight"></a>享元模式 flywight</h2><p>1.共享元对象，不重新创建多个小对象了<br>2.池化思想，如数据库连接池、jvm字符串常量池<br>3.结合composite，如图形组合</p>
+<h2 id="责任链-responsibility-chain"><a href="#责任链-responsibility-chain" class="headerlink" title="责任链 responsibility-chain"></a>责任链 responsibility-chain</h2><h3 id="单向链"><a href="#单向链" class="headerlink" title="单向链"></a>单向链</h3><p>验证用户是否有权限时，要依次经过多个不同类型权限验证(AuthHandler)；<br>某一个验证有权限时就停止同时返回true，直到最后一个验证器。</p>
+<p>时序图：</p>
+<pre class="mermaid">sequenceDiagram
+    autonumber
+    AuthHandler1-->>AuthHandler2: UserSubject
+    AuthHandler2-->>AuthHandler3: UserSubject</pre>
+
+<p>类图：</p>
+<pre class="mermaid">classDiagram
+    class UserSubject
+    UserSubject: +userId
+    UserSubject: +userType
+    UserSubject: +group...
+
+    class AuthHandler
+    <<interfase>> AuthHandler
+    AuthHandler: +doValidate(UserSubject userSubject) boolean
+
+    AuthHandler1 ..|>  AuthHandler : impl
+    AuthHandler2 ..|>  AuthHandler : impl
+    AuthHandler3 ..|>  AuthHandler : impl
+
+    class AuthHandlerChain
+    AuthHandlerChain: +authHandlerList List<authhandler>
+    AuthHandlerChain: +addAuthHandler(AuthHandler authHandler) AuthHandlerChain
+    AuthHandlerChain: +doValidate(UserSubject userSubject) boolean
+
+    AuthHandlerChain ..|>  AuthHandler : impl
+
+    class Main
+    Main: authHandlerChain.add(authHandler1).add(authHandler2).add(authHandler3)
+    Main: authHandlerChain.doValidate(userSubject)</authhandler></interfase></pre>
+
+
+<h3 id="双向链"><a href="#双向链" class="headerlink" title="双向链"></a>双向链</h3><p>例如，tomcat的 Filter/FilerChain ， SpringMVC的 HandlerInterceptor</p>
+<p>时序图</p>
+<pre class="mermaid">sequenceDiagram
+    autonumber
+    Filter1-->>Filter2: request
+    Filter2-->>Filter3: request
+    Filter3->>Servlet: request
+    Servlet->>Filter3: response
+    Filter3-->>Filter2: response
+    Filter2-->>Filter1: response</pre>
+
+<p>类图：</p>
+<pre class="mermaid">classDiagram
+    class Filter
+    <<interface>> Filter
+    Filter: +doFilter(request, response, filterChain)
+
+    class FilterChain
+    FilterChain: -p int
+    FilterChain: +doFilter(request, response, filterChain)
+
+    Filter1 ..|>  Filter : impl
+    Filter2 ..|>  Filter : impl</interface></pre>
+
+
+<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h3><p>通过代理类去调用代理对象方法        </p>
+<pre class="mermaid">classDiagram
+
+class Movable
+<<interface>> Movable
+Movable: +doMove()
+
+class Tank
+Tank: +doMove()
+
+Tank ..|>  Movable : impl
+
+class TankLogProxy
+TankLogProxy: -m:Movable
+TankLogProxy: +doMove()
+
+TankLogProxy ..|>  Movable : impl
+
+class TankTimeProxy
+TankTimeProxy: -m:Movable
+TankTimeProxy: +doMove()
+
+TankTimeProxy ..|>  Movable : impl
+
+class Person
+Person: -name
+Person: +dirveTank()</interface></pre>
+
+<h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><p>静态代理缺点：Proxy类需要明确实现Movable接口，不方便切换为其他类型。<br>如，已经实现好的一个TankLogProxy来打印日志，要想给或者Person也打印日志的话，需要重新实现LogProxy了.   </p>
+<p>使用jdk动态代理实现：被代理类要通过接口实现</p>
+<pre class="mermaid">classDiagram
+
+class Movable
+<<interface>> Movable
+Movable: +doMove()
+
+class Tank
+Tank: +doMove()
+
+class Person
+Person: -name
+Person: +eat()
+Person: +doMove()
+
+class LogProxy
+LogProxy: -target Object
+LogProxy: invoke(Object proxy, Method method, Object[] args) Object
+
+Tank ..|>  Movable : impl
+Person ..|>  Movable : impl
+LogProxy ..|>  InvocationHandler : impl
+Person o-- LogProxy
+Tank o-- LogProxy</interface></pre>
+
+<p>cglib动态代理实现：被代理接口不需要接口</p>
+<h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><p>spring, aspect oriented programming 面向切面编程        </p>
+<p>切面：一组代理对象，组成一个切面<br>切入点：被调用的一个或多个方法，组成一个切入点<br>织入：从切入点出插入切面的操作，叫织入</p>
+<p>通过接口实现的类 ==&gt; jdk动态代理 ==》动态生成代理类，通过代理类来调用方法执行<br>被代理类(注意不能为final) ==&gt; cglib(asm) ==》动态生成被代理的子类，通过子类来执行方法       </p>
+<h2 id="迭代器-Iterator"><a href="#迭代器-Iterator" class="headerlink" title="迭代器(Iterator)"></a>迭代器(Iterator)</h2><p>Array<br>LinkedList<br>Collection<br>Iterator ==&gt;<br>    hasNext():boolean<br>    next():Object       </p>
+<h2 id="访问者模式-Visitor"><a href="#访问者模式-Visitor" class="headerlink" title="访问者模式(Visitor)"></a>访问者模式(Visitor)</h2><p>适合内部结构固定的模型<br>AST(abstract syntex tree 抽象语法树)<br>Tomcat(server.xml)<br>asm(class)      </p>
+<h2 id="构造器-builder"><a href="#构造器-builder" class="headerlink" title="构造器(builder)"></a>构造器(builder)</h2><p>分步构造一个复杂对象，每个构造器构造复杂对象的一部分，最好拼接起来</p>
+<pre class="mermaid">classDiagram
+
+class Product
+Product: +part1
+Product: +part2
+Product: +part3
+
+class Builder
+<<interface>> Builder
+Builder: +buildPart1() Builder
+Builder: +buildPart2() Builder
+Builder: +buildPart3() Builder
+Builder: +build() Product
+
+class SimpleBuilder
+SimpleBuilder: -product Product
+SimpleBuilder: +buildPart1() Builder
+SimpleBuilder: +buildPart2() Builder
+SimpleBuilder: +buildPart3() Builder
+SimpleBuilder: +build() Product
+
+class ComplextBuilder
+ComplextBuilder: -product Product
+ComplextBuilder: +buildPart1() Builder
+ComplextBuilder: +buildPart2() Builder
+ComplextBuilder: +buildPart3() Builder
+ComplextBuilder: +build() Product
+
+SimpleBuilder ..|>  Builder : impl
+ComplextBuilder ..|>  Builder : impl
+Builder ..> Product : create</interface></pre>
+
+<h2 id="适配器模式-adapter"><a href="#适配器模式-adapter" class="headerlink" title="适配器模式(adapter)"></a>适配器模式(adapter)</h2><p>适配两种不同的类型</p>
+<pre class="mermaid">classDiagram
+
+class FileInputStream
+FileInputStream: +read()
+
+class InputStreamReader
+InputStreamReader: +read()
+
+
+class BufferedReader
+BufferedReader: +readLine()
+
+FileInputStream -- InputStreamReader
+InputStreamReader -- BufferedReader
+FileInputStream .. BufferedReader : 不能直接访问</pre>
+
+<h2 id="桥接模式-bridge"><a href="#桥接模式-bridge" class="headerlink" title="桥接模式(bridge)"></a>桥接模式(bridge)</h2><p>m-n  m/n都有多种的时候，使用桥接模式，避免类爆炸</p>
+<pre class="mermaid">classDiagram
+
+class MClazz
+MClazz: +NClazz
+MClazz: +get() MNClazz
+
+class NClazz1
+NClazz1: +exec1()
+
+class NClazz2
+NClazz2: +exec2()
+
+class NClazz3
+NClazz3: +exec3()
+
+NClazz1 ..|>  NClazz : extends
+NClazz2 ..|>  NClazz : extends
+NClazz3 ..|>  NClazz : extends
+
+MClazz *-- NClazz : Composition</pre>
+
+<h2 id="命令模式-command"><a href="#命令模式-command" class="headerlink" title="命令模式(command)"></a>命令模式(command)</h2><pre class="mermaid">classDiagram
+
+class Command
+<<abstract>> Command
+Command: -content StringBuilder
+Command: +redo()
+Command: +undo()
+
+
+InsertCommand --|> Command
+RedoCommand --|> Command
+UndoCommand --|> Command</abstract></pre>
+<ul>
+<li>多个命令组成大的命令：composite(组合)</li>
+<li>多次redo命令：chain responseribility(责任链)</li>
+<li>trasaction回滚：记忆</li>
+</ul>
+<h2 id="原型模式-prototype"><a href="#原型模式-prototype" class="headerlink" title="原型模式(prototype)"></a>原型模式(prototype)</h2><p>Object.clone() ==&gt; Cloneable </p>
+<ul>
+<li>浅copy：引用类型只copy对象地址</li>
+<li>深copy：被引用对象实现cloneable接口，组合对象clone方法调用成员对象的clone对象</li>
+</ul>
+<p>哪些对象需要注意clone</p>
+<ul>
+<li>基本数据类型 不需要</li>
+<li>String 不需要，都是使用的常量池</li>
+<li>StringBuilder/StringBuffer 也需要复制一份</li>
+<li>引用对象 必须实现clone方法</li>
+</ul>
+<h2 id="备忘录模式-memento"><a href="#备忘录模式-memento" class="headerlink" title="备忘录模式(memento)"></a>备忘录模式(memento)</h2><p>记录快照 –&gt; 对象序列化(反序列化)<br>serizliable<br>transient</p>
+<h2 id="模板方法-TemplateMethod"><a href="#模板方法-TemplateMethod" class="headerlink" title="模板方法(TemplateMethod)"></a>模板方法(TemplateMethod)</h2><p>钩子函数</p>
+<h2 id="状态模式-state"><a href="#状态模式-state" class="headerlink" title="状态模式(state)"></a>状态模式(state)</h2><p>swatch case ==转换==&gt; 多个子类</p>
+<ul>
+<li>有限状态机<br>Thread state</li>
+</ul>
+<h2 id="解释器（Intepreter）"><a href="#解释器（Intepreter）" class="headerlink" title="解释器（Intepreter）"></a>解释器（Intepreter）</h2><p>动态脚本解释</p>
+<h1 id="6大设计原则"><a href="#6大设计原则" class="headerlink" title="6大设计原则"></a>6大设计原则</h1><p>solid稳定的  记忆首字母</p>
+<h2 id="单一原则（Single-Responsibility-Principle）"><a href="#单一原则（Single-Responsibility-Principle）" class="headerlink" title="单一原则（Single Responsibility Principle）"></a>单一原则（Single Responsibility Principle）</h2><p>一个类或者一个方法只负责一项职责，尽量做到类的只有一个行为原因引起变化</p>
+<h2 id="开闭原则（open-closed-principle）"><a href="#开闭原则（open-closed-principle）" class="headerlink" title="开闭原则（open closed principle）"></a>开闭原则（open closed principle）</h2><p>用抽象构建架构，用实现扩展原则</p>
+<h2 id="里氏替换原则（LSP-liskov-substitution-principle）"><a href="#里氏替换原则（LSP-liskov-substitution-principle）" class="headerlink" title="里氏替换原则（LSP liskov substitution principle）"></a>里氏替换原则（LSP liskov substitution principle）</h2><p>子类可以扩展父类的功能，但不能改变原有父类的功能</p>
+<h2 id="迪米特原则（law-of-demeter-LOD）"><a href="#迪米特原则（law-of-demeter-LOD）" class="headerlink" title="迪米特原则（law of demeter LOD）"></a>迪米特原则（law of demeter LOD）</h2><p>最少知道原则，尽量降低类与类之间的耦合；</p>
+<p>一个对象应该对其他对象有最少的了解</p>
+<h2 id="接口隔离（interface-segregation-principle）"><a href="#接口隔离（interface-segregation-principle）" class="headerlink" title="接口隔离（interface segregation principle）"></a>接口隔离（interface segregation principle）</h2><p>建立单一接口；（扩展为类也是一种接口，一切皆接口）</p>
+<p>定义：<br>    a.客户端不应该依赖它不需要的接口；<br>    b.类之间依赖关系应该建立在最小的接口上；    </p>
+<p>简单理解：复杂的接口，根据业务拆分成多个简单接口；（对于有些业务的拆分多看看适配器的应用）</p>
+<p>【接口的设计粒度越小，系统越灵活，但是灵活的同时结构复杂性提高，开发难度也会变大，维护性降低】　</p>
+<h2 id="依赖倒置原则（dependence-inversion-principle）"><a href="#依赖倒置原则（dependence-inversion-principle）" class="headerlink" title="依赖倒置原则（dependence inversion principle）"></a>依赖倒置原则（dependence inversion principle）</h2><p>面向接口编程；（通过接口作为参数实现应用场景）</p>
+<p>抽象就是接口或者抽象类，细节就是实现类</p>
+<p>含义：<br>    上层模块不应该依赖下层模块，两者应依赖其抽象；<br>    抽象不应该依赖细节，细节应该依赖抽象；          </p>
+<p>通俗点就是说变量或者传参数，尽量使用抽象类，或者接口；<br>【接口负责定义public属性和方法，并且申明与其他对象依赖关系，抽象类负责公共构造部分的实现，实现类准确的实现业务逻辑】</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexoblog/20200603175559.html" rel="next" title="java-system-exit问题">
+                <i class="fa fa-chevron-left"></i> java-system-exit问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/hexoblog/20200609102427.html" rel="prev" title="java-非常有用的类库">
+                java-非常有用的类库 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/hexoblog/images/avatar.png" alt="全部文章">
+            
+              <p class="site-author-name" itemprop="name">全部文章</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/hexoblog/./archives/">
+                
+                    <span class="site-state-item-count">78</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/hexoblog/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://gitee.com/lixl" title="GitHub &rarr; https://gitee.com/lixl" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#23种设计模式"><span class="nav-number">1.</span> <span class="nav-text">23种设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单例模式singleton"><span class="nav-number">1.1.</span> <span class="nav-text">单例模式singleton</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态方法单例"><span class="nav-number">1.1.1.</span> <span class="nav-text">静态方法单例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态内部类单例"><span class="nav-number">1.1.2.</span> <span class="nav-text">静态内部类单例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DCL单例"><span class="nav-number">1.1.3.</span> <span class="nav-text">DCL单例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举单例"><span class="nav-number">1.1.4.</span> <span class="nav-text">枚举单例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring-bean单例"><span class="nav-number">1.1.5.</span> <span class="nav-text">spring-bean单例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#策略模式strategy"><span class="nav-number">1.2.</span> <span class="nav-text">策略模式strategy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工厂模式factory"><span class="nav-number">1.3.</span> <span class="nav-text">工厂模式factory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#门面模式-调停者模式"><span class="nav-number">1.4.</span> <span class="nav-text">门面模式/调停者模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰器模式"><span class="nav-number">1.5.</span> <span class="nav-text">装饰器模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#观察者模式-observer"><span class="nav-number">1.6.</span> <span class="nav-text">观察者模式 observer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合模式-composite"><span class="nav-number">1.7.</span> <span class="nav-text">组合模式 composite</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#享元模式-flywight"><span class="nav-number">1.8.</span> <span class="nav-text">享元模式 flywight</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#责任链-responsibility-chain"><span class="nav-number">1.9.</span> <span class="nav-text">责任链 responsibility-chain</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单向链"><span class="nav-number">1.9.1.</span> <span class="nav-text">单向链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双向链"><span class="nav-number">1.9.2.</span> <span class="nav-text">双向链</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代理模式"><span class="nav-number">1.10.</span> <span class="nav-text">代理模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态代理"><span class="nav-number">1.10.1.</span> <span class="nav-text">静态代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态代理"><span class="nav-number">1.10.2.</span> <span class="nav-text">动态代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP"><span class="nav-number">1.10.3.</span> <span class="nav-text">AOP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器-Iterator"><span class="nav-number">1.11.</span> <span class="nav-text">迭代器(Iterator)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问者模式-Visitor"><span class="nav-number">1.12.</span> <span class="nav-text">访问者模式(Visitor)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造器-builder"><span class="nav-number">1.13.</span> <span class="nav-text">构造器(builder)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适配器模式-adapter"><span class="nav-number">1.14.</span> <span class="nav-text">适配器模式(adapter)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桥接模式-bridge"><span class="nav-number">1.15.</span> <span class="nav-text">桥接模式(bridge)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令模式-command"><span class="nav-number">1.16.</span> <span class="nav-text">命令模式(command)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型模式-prototype"><span class="nav-number">1.17.</span> <span class="nav-text">原型模式(prototype)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#备忘录模式-memento"><span class="nav-number">1.18.</span> <span class="nav-text">备忘录模式(memento)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板方法-TemplateMethod"><span class="nav-number">1.19.</span> <span class="nav-text">模板方法(TemplateMethod)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态模式-state"><span class="nav-number">1.20.</span> <span class="nav-text">状态模式(state)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解释器（Intepreter）"><span class="nav-number">1.21.</span> <span class="nav-text">解释器（Intepreter）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6大设计原则"><span class="nav-number">2.</span> <span class="nav-text">6大设计原则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单一原则（Single-Responsibility-Principle）"><span class="nav-number">2.1.</span> <span class="nav-text">单一原则（Single Responsibility Principle）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开闭原则（open-closed-principle）"><span class="nav-number">2.2.</span> <span class="nav-text">开闭原则（open closed principle）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#里氏替换原则（LSP-liskov-substitution-principle）"><span class="nav-number">2.3.</span> <span class="nav-text">里氏替换原则（LSP liskov substitution principle）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迪米特原则（law-of-demeter-LOD）"><span class="nav-number">2.4.</span> <span class="nav-text">迪米特原则（law of demeter LOD）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口隔离（interface-segregation-principle）"><span class="nav-number">2.5.</span> <span class="nav-text">接口隔离（interface segregation principle）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖倒置原则（dependence-inversion-principle）"><span class="nav-number">2.6.</span> <span class="nav-text">依赖倒置原则（dependence inversion principle）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lixl-site</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/hexoblog/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/hexoblog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/hexoblog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/hexoblog/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/hexoblog/js/utils.js?v=7.2.0"></script>
+
+  <script src="/hexoblog/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/hexoblog/js/affix.js?v=7.2.0"></script>
+
+  <script src="/hexoblog/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/hexoblog/js/scrollspy.js?v=7.2.0"></script>
+<script src="/hexoblog/js/post-details.js?v=7.2.0"></script>
+
+
+
+  
+
+
+  <script src="/hexoblog/js/next-boot.js?v=7.2.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'b6cea732dbf2ca167181',
+    clientSecret: 'b1da71c5f8e153cd0b45867373233d89cba7955a',
+    repo: 'blogtalk',
+    owner: 'lixl-site',
+    admin: ['lixl-site'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/hexoblog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      const selection = document.getSelection();
+      const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false;
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+      if (selected) {
+        selection.removeAllRanges();
+        selection.addRange(selected);
+      }
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
